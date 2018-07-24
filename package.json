@@ -7,10 +7,6 @@
     "bulma": "^0.7.1",
     "bulma-start": "0.0.2"
   },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mathvalenza/bootcamp-final-project.git"
