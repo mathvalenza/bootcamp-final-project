@@ -1,0 +1,24 @@
+{
+  "name": "bootcamp-final-project",
+  "version": "1.0.0",
+  "description": "Projeto Final Bootcamp Javascript Joinville",
+  "main": "index.js",
+  "dependencies": {
+    "bulma": "^0.7.1",
+    "bulma-start": "0.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mathvalenza/bootcamp-final-project.git"
+  },
+  "author": "Matheus Vinícius Valenza e Aron Richter",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mathvalenza/bootcamp-final-project/issues"
+  },
+  "homepage": "https://github.com/mathvalenza/bootcamp-final-project#readme"
+}
