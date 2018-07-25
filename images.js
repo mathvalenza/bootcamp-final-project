@@ -10,6 +10,8 @@ $("#request-image").click(function() {
     request.addEventListener("load", function(){
         if (this.status === 200) {
             console.log("returnGet");
+            var json = this.responseText.trim();
+            console.log(json);
         }
     });
     
