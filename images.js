@@ -1,6 +1,10 @@
 $("#request-image").click(function() {
+    getUrlImage('obiwankenobi');
+});
+
+function getUrlImage(image){
     let request = new XMLHttpRequest();
-    let url = "https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=darth";
+    let url = "https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=" + image;
     let key = "fe69342813854c00b235c9ac7f12cefb";
 
     request.open("GET", url);
@@ -9,15 +13,11 @@ $("#request-image").click(function() {
 
     request.addEventListener("load", function(){
         if (this.status === 200) {
-            console.log("returnGet");
             let json = this.responseText.trim();
             let collection = JSON.parse(json);
-            console.log(collection["value"][0]["contentUrl"]);
+            let return_img = collection["value"][0]["contentUrl"];
+            $("#image").append("<img src="+return_img+" width=500px height=500px>");
         }
     });
-    
     request.send();
-
-    return console.log("endFunction");
-});
-
+}
