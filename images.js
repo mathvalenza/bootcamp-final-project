@@ -1,5 +1,5 @@
 $("#request-image").click(function() {
-    getUrlImage('obiwankenobi');
+    getUrlImage('Ben Quadinaros');
 });
 
 function getUrlImage(image){
