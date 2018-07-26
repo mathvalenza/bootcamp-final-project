@@ -1,45 +1,51 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Let's Play!</title>
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
-  </script>
+    <title>Let's Play!</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
+    </script>
 
-</head>
+  </head>
 
-<body>
-  <section class="section">
-    <h1 class="title">How much do you know about Star Wars?</h1>
-    <h1 class="subtitle">Let's Play!</h1>
+  <body class="columns is-centered">
+    <div class="column is-half">
+      <section class="section">
+        <h1 class="title">How much do you know about Star Wars?</h1>
+        <h1 class="subtitle">Let's Find Out!</h1>  
+        <!-- <button id="get-all" class="button">Get All</button> -->
+        <!-- <button id="get-by-id" class="button">Get By Id</button> -->
+        <!-- <button id="question-1" class="button">Question 1</button> -->
+        <!-- <button id="question-2" class="button">Question 2</button> -->
+        <!-- <button id="question-3" class="button">Question 3</button> -->
+        <!-- <button id="question-4" class="button">Question 4</button> -->
+        <!-- <button id="question-5" class="button">Question 5</button> -->
 
-    <button id="get-all" class="button">Get All</button>
-    <button id="get-by-id" class="button">Get By Id</button>
-    <button id="question-1" class="button">Question 1</button>
-    <button id="question-2" class="button">Question 2</button>
-    <button id="question-3" class="button">Question 3</button>
-    <button id="question-4" class="button">Question 4</button>
-    <button id="question-5" class="button">Question 5</button>
+        <button id="request-image"> Teste image.js</button>
 
-    <section class="section" id="form">
-      <h1 class="subtitle" id="question"></h1>
+        <div class="columns is-centered">
+          <div id="image"></div>
+        </div>
 
-    </section>
-    <input type="submit" value="Submit" id="submit" class="button">
-  </section>  
+        <section class="section" id="form">
+          <h1 class="subtitle" id="question"></h1>
+        </section>
 
-  <section>
-    <button id="request-image"> Teste image.js</button>
-    <div id="image"></div>
-  </section>
+        <div class="buttons has-addons is-right">
+            <button class="button is-rounded is-info" id="submit">Confirmar</button>
+            <button class="button is-rounded is-success">Next</button> 
+        </div>
+      </section>
+    </div>
 
-  <script src="index.js"></script>
-  <script src="images.js"></script>
-</body>
+    
 
+    <script src="index.js"></script>
+    <script src="images.js"></script>
+  </body>
 </html>
