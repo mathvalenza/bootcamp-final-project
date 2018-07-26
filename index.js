@@ -4,7 +4,6 @@ $("#get-all").click(function() {
         var items = [];
         console.log(data);
         $.each( data["results"], function( key, val ) {
-			console.log(key, val);
 			items.push( "<li id='" + key + "'>" + "(" + val["url"] + ")" + val["name"] + "</li>" );
 		});
 
@@ -23,7 +22,6 @@ $("#get-by-id").click(function() {
         var items = [];
         console.log(data);
         $.each( data, function( key, val ) {
-			console.log(key, val);
 			items.push( "<li id='" + key + "'>" + key + ": " + val + "</li>" );
 		});
 
@@ -37,19 +35,16 @@ $("#get-by-id").click(function() {
 $("#question-1").click(function() {
 	var randomId = Math.floor((Math.random() * 87) + 1);
 
-	console.log(randomId);
-	console.log("generate-question");
-
     $.getJSON(`https://swapi.co/api/people/${randomId}`, function(data, status){
 
         var items = [];
         console.log(data);
         $.each( data, function( key, val ) {
-			console.log(key, val);
 			items.push( "<li id='" + key + "'>" + key + ": " + val + "</li>" );
 
 			if (key === "name") {
 				$("#question").append(`1 - Qual a cor dos olhos de <b>${val}</b> ?`);
+    			$("#form").append('<input class="input is-2" id="answer" type="text" placeholder="Text input">');
 			}
 
 			if (key === "eye_color") {
@@ -57,20 +52,18 @@ $("#question-1").click(function() {
 			}
 		});
 
-		$( "<ul/>", {
-			"class": "section",
-			html: items.join( "" )
-		}).appendTo( "body" );
+		// $( "<ul/>", {
+		// 	"class": "section",
+		// 	html: items.join( "" )
+		// }).appendTo( "body" );
     }); 
 
-    $("#form").append('<input class="input is-2" id="answer" type="text" placeholder="Text input">');
+    localStorage.setItem("question", 1);
+
 });
 
-$("#question-2").click(function() {
+function question2() {
 	var randomId = Math.floor((Math.random() * 87) + 1);
-
-	console.log(randomId);
-	console.log("generate-question");
 
     $.getJSON(`https://swapi.co/api/people/${randomId}`, function(data, status){
 
@@ -82,75 +75,99 @@ $("#question-2").click(function() {
 
 			if (key === "name") {
 				$("#question").append(`2 - Qual a altura (cm) de <b>${val}</b> ?`);
+    			$("#form").append('<input class="input is-2" id="answer" type="text" placeholder="Text input">');
 			}
 
 			if (key === "height") {
 				localStorage.setItem("correctAnswer", val);
 			}
 		});
-
-		$( "<ul/>", {
-			"class": "section",
-			html: items.join( "" )
-		}).appendTo( "body" );
     }); 
+};
 
-    $("#form").append('<input class="input is-2" id="answer" type="text" placeholder="Text input">');
-});
+// function question3() {
+// 	var randomId = Math.floor((Math.random() * 87) + 1);
+// 	var correctAnswer = null;
+// 	var optionsAnswer = [0, 0, 0, 0];
 
-$("#question-3").click(function() {
-	var randomId = Math.floor((Math.random() * 87) + 1);
+//     $.getJSON(`https://swapi.co/api/people/${randomId}`, function(data, status){
 
-	console.log(randomId);
-	console.log("generate-question");
+//         var items = [];
+//         console.log(data);
+//         $.each( data, function( key, val ) {
+// 			items.push( "<li id='" + key + "'>" + key + ": " + val + "</li>" );
 
-    $.getJSON(`https://swapi.co/api/people/${randomId}`, function(data, status){
+// 			if (key === "name") {
+// 				$("#question").append(`3 - Qual o peso (kg) de <b>${val}</b> ?`);
+//     			// $("#form").append('<input class="input is-2" id="answer" type="text" placeholder="Text input">');
+// 			}
 
-        var items = [];
-        console.log(data);
-        $.each( data, function( key, val ) {
-			console.log(key, val);
-			items.push( "<li id='" + key + "'>" + key + ": " + val + "</li>" );
+// 			if (key === "mass") {
+// 				localStorage.setItem("correctAnswer", val);
 
-			if (key === "name") {
-				$("#question").append(`3 - Qual o peso (kg) de <b>${val}</b> ?`);
-			}
+// 				correctAnswer = val;
 
-			if (key === "mass") {
-				localStorage.setItem("correctAnswer", val);
-			}
-		});
+// 				var randomIndex = Math.floor(Math.random() * optionsAnswer.length + 1);
+// 				console.log("randomIndex: ", randomIndex);
 
-		$( "<ul/>", {
-			"class": "section",
-			html: items.join( "" )
-		}).appendTo( "body" );
-    }); 
+// 				for (var i=0; i<optionsAnswer.length; i++) {
+// 					if (i === randomIndex) {
+// 						optionsAnswer[i] = val;
+// 					} else {
 
-    $("#form").append('<input class="input is-2" id="answer" type="text" placeholder="Text input">');
-});
+// 						var newNumber = 0;
+// 						var count = 0;
 
-$("#question-4").click(function() {
+// 						while (count < 10) {
+// 							moreOrMinus = Number(Math.floor((Math.random() * 2)));
+// 							if (moreOrMinus === 0) {
+// 								newNumber = Number(correctAnswer) + Number(Math.floor((Math.random() * 10)));
+// 							} else {
+// 								newNumber = Number(correctAnswer) - Number(Math.floor((Math.random() * 10)));
+// 							}
+
+// 							if (!optionsAnswer.includes(newNumber)) {
+// 								break;
+// 							} else {
+// 								count++;
+// 							}
+// 						}
+// 						optionsAnswer[i] = newNumber;
+// 					}
+// 				}
+// 				writeOptions(optionsAnswer);
+// 			}
+// 		});
+//     }); 
+// };
+
+function question3() {
 	var randomId = Math.floor((Math.random() * 61) + 1);
 	var correctAnswer = null;
 	var optionsAnswer = [0, 0, 0, 0];
-
-	console.log(randomId);
-	console.log("generate-question");
 
     $.getJSON(`https://swapi.co/api/planets/${randomId}`, function(data, status){
 
         var items = [];
         console.log(data);
         $.each( data, function( key, val ) {
-			console.log(key, val);
 			items.push( "<li id='" + key + "'>" + key + ": " + val + "</li>" );
 
 			if (key === "name") {
-				$("#question").append(`4 - Quantas horas tem o dia de <b>${val}</b> ?`);
+				$("#question").append(`3 - Quantas horas tem o dia de <b>${val}</b> ?`);
 			}
 
 			if (key === "rotation_period") {
+				if (val === "unknown") {
+					$("#question").empty();
+				    $("#answer").remove();
+				    $("#radio-answers").remove();
+				    $("#feedback").remove();
+				    question3();
+
+				    return;
+				}
+
 				localStorage.setItem("correctAnswer", val);
 				correctAnswer = val;
 
@@ -163,130 +180,234 @@ $("#question-4").click(function() {
 					} else {
 
 						var newNumber = 0;
+						var count = 0;
 
-						while (optionsAnswer.includes(newNumber)) {
+						while (count < 10) {
 							moreOrMinus = Number(Math.floor((Math.random() * 2)));
 							if (moreOrMinus === 0) {
 								newNumber = Number(correctAnswer) + Number(Math.floor((Math.random() * 10)));
 							} else {
 								newNumber = Number(correctAnswer) - Number(Math.floor((Math.random() * 10)));
 							}
-						
+
+							if (!optionsAnswer.includes(newNumber)) {
+								break;
+							} else {
+								count++;
+							}
 						}
 						optionsAnswer[i] = newNumber;
 					}
 				}
+				writeOptions(optionsAnswer);
 			}
 		});
-
-		$( "<ul/>", {
-			"class": "section",
-			html: items.join( "" )
-		}).appendTo( "body" );
-	    $("#form").append(`<div class="control">
-		  <label class="radio">
-		    <input type="radio" name="answer" value="${optionsAnswer[0]}">
-		    ${optionsAnswer[0]}
-		  </label>
-		  <label class="radio">
-		    <input type="radio" name="answer" value="${optionsAnswer[1]}">
-		    ${optionsAnswer[1]}
-		  </label>
-		  <label class="radio">
-		    <input type="radio" name="answer" value="${optionsAnswer[2]}"">
-		    ${optionsAnswer[2]}
-		  </label>
-		  <label class="radio">
-		    <input type="radio" name="answer" value="${optionsAnswer[3]}">
-		    ${optionsAnswer[3]}
-		  </label>
-		</div>`);
     }); 
-});
+};
 
-$("#question-5").click(function() {
+function writeOptions(optionsAnswer) {
+    $("#form").append(`<div class="control" id="radio-answers">
+	  <label class="radio">
+	    <input type="radio" name="answer" value="${optionsAnswer[0]}">
+	    ${optionsAnswer[0]}
+	  </label>
+	  <label class="radio">
+	    <input type="radio" name="answer" value="${optionsAnswer[1]}">
+	    ${optionsAnswer[1]}
+	  </label>
+	  <label class="radio">
+	    <input type="radio" name="answer" value="${optionsAnswer[2]}"">
+	    ${optionsAnswer[2]}
+	  </label>
+	  <label class="radio">
+	    <input type="radio" name="answer" value="${optionsAnswer[3]}">
+	    ${optionsAnswer[3]}
+	  </label>
+	</div>`);
+}
+
+function question4() {
 	var randomId = Math.floor((Math.random() * 61) + 1);
 
-	console.log(randomId);
-	console.log("generate-question");
+	var correctAnswer = null;
+	var optionsAnswer = [0, 0, 0, 0];
 
     $.getJSON(`https://swapi.co/api/planets/${randomId}`, function(data, status){
 
         var items = [];
         console.log(data);
         $.each( data, function( key, val ) {
-			console.log(key, val);
 			items.push( "<li id='" + key + "'>" + key + ": " + val + "</li>" );
 
 			if (key === "name") {
-				$("#question").append(`5 - Quantas pessoas há em ${val} ?`);
+				$("#question").append(`4 - Quantas pessoas há em ${val} ?`);
+    			// $("#form").append('<input class="input is-2" id="answer" type="text" placeholder="Text input">');
 			}
 
 			if (key === "population") {
+				if (val === "unknown") {
+					$("#question").empty();
+				    $("#answer").remove();
+				    $("#radio-answers").remove();
+				    $("#feedback").remove();
+				    question4();
+
+				    return;
+				}
+
 				localStorage.setItem("correctAnswer", val);
+
+				correctAnswer = val;
+
+				var randomIndex = Math.floor(Math.random() * optionsAnswer.length + 1);
+				console.log("randomIndex: ", randomIndex);
+
+				for (var i=0; i<optionsAnswer.length; i++) {
+					if (i === randomIndex) {
+						optionsAnswer[i] = val;
+					} else {
+
+						var newNumber = 0;
+						var count = 0;
+
+						while (count < 10) {
+							moreOrMinus = Number(Math.floor((Math.random() * 2)));
+							if (moreOrMinus === 0) {
+								newNumber = Number(correctAnswer) + Number(Math.floor((Math.random() * 10)));
+							} else {
+								newNumber = Number(correctAnswer) - Number(Math.floor((Math.random() * 10)));
+							}
+
+							if (!optionsAnswer.includes(newNumber)) {
+								break;
+							} else {
+								count++;
+							}
+						}
+						optionsAnswer[i] = newNumber;
+					}
+				}
+				writeOptions(optionsAnswer);
 			}
 		});
-
-		$( "<ul/>", {
-			"class": "section",
-			html: items.join( "" )
-		}).appendTo( "body" );
     }); 
 
-    $("#form").append('<input class="input is-2" id="answer" type="text" placeholder="Text input">');
-});
+};
 
-$("#question-6").click(function() {
-	var randomId = Math.floor((Math.random() * 61) + 1);
+function question5() {
+	var randomId = Math.floor((Math.random() * 87) + 1);
 
-	console.log(randomId);
-	console.log("generate-question");
-
-    $.getJSON(`https://swapi.co/api/planets/${randomId}`, function(data, status){
+    $.getJSON(`https://swapi.co/api/people/${randomId}`, function(data, status){
 
         var items = [];
         console.log(data);
         $.each( data, function( key, val ) {
-			console.log(key, val);
 			items.push( "<li id='" + key + "'>" + key + ": " + val + "</li>" );
 
-			$("#question").append(`6 - Qual o nome do personagem abaixo?`);
 			if (key === "name") {
+				$("#question").append(`5 - Qual o nome do personagem abaixo?`);
 				localStorage.setItem("correctAnswer", val);
+				getUrlImage(val);
+    			$("#form").append('<input class="input is-2" id="answer" type="text" placeholder="Text input">');
 			}
 		});
-
-		$( "<ul/>", {
-			"class": "section",
-			html: items.join( "" )
-		}).appendTo( "body" );
     }); 
 
-    $("#form").append('<input class="input is-2" id="answer" type="text" placeholder="Text input">');
-});
+};
 
-$("#submit").click(function(event)	 {
+function getUrlImage(image){
+    let request = new XMLHttpRequest();
+    let url = "https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=" + image;
+    let key = "fe69342813854c00b235c9ac7f12cefb";
+
+    request.open("GET", url);
+    request.setRequestHeader("Ocp-Apim-Subscription-Key", key);
+    request.setRequestHeader("Accept", "application/json");
+
+    request.addEventListener("load", function(){
+        if (this.status === 200) {
+            let json = this.responseText.trim();
+            let collection = JSON.parse(json);
+            let return_img = collection["value"][0]["contentUrl"];
+            $("#image").append("<img src="+return_img+" width=200px height=200px>");
+        }
+    });
+    request.send();
+}
+
+$("#submit").click(function(event) {
 	console.log("submit: ", $( "#answer" ));
-	if ( $("#answer" ).val() == localStorage.getItem("correctAnswer") ) {
-	    console.log("ACERTÔ MIZERAVI");
+	console.log('localStorage.getItem("question"): ', localStorage.getItem("question"));
+
+	if (localStorage.getItem("question") == 3 || localStorage.getItem("question") == 4) {
+		submitRadio(event);
+	} else {
+		if ( $("#answer" ).val() == localStorage.getItem("correctAnswer") ) {
+		    positiveFeedback();
+	  	} else {
+	  		negativeFeedback();
+	  	}
 	    return;
-  	}
+	  }
  
 	event.preventDefault();
-	console.log("ERRRRRRROU!");
 });
 
-$("#submit-radio").click(function(event)	 {
+function submitRadio(event) {
 	console.log("submit: ", $( "#answer" ));
 	var selValue = $('input[name=answer]:checked').val(); 
 
 	console.log('selValue: ', selValue);
    	
    	if (selValue == localStorage.getItem("correctAnswer")) {
-	    console.log("ACERTÔ MIZERAVI");
+	    positiveFeedback();
 	    return;
+  	} else {
+		negativeFeedback();
   	}
  
 	event.preventDefault();
+};
+
+function positiveFeedback() {
+	console.log("ACERTÔ MIZERAVI");
+	$("#feedback").remove();
+	$("#form").append('<h2 class="has-text-success" id="feedback">Great!</h2>');
+    $('#answer').removeClass('is-danger').addClass('is-success');
+}
+
+function negativeFeedback() {
 	console.log("ERRRRRRROU!");
+	$("#feedback").remove();
+	$("#form").append('<h2 class="has-text-danger" id="feedback">Try it again!</h2>');
+	$('#answer').addClass('is-danger');
+}
+
+$("#next").click(function(event) {
+	var question = localStorage.getItem("question");
+
+	question++;
+    localStorage.setItem("question", question);
+    $("#question").empty();
+    $("#answer").remove();
+    $("#radio-answers").remove();
+    $("#feedback").remove();
+    console.log(":>> question: ", localStorage.getItem("question"));
+    switch(question) {
+	    case 2:
+	        question2();
+	        break;
+	    case 3:
+	        question3();
+	        break;
+	    case 4:
+	        question4();
+	        break;
+	    case 5:
+	        question5();
+	        break;
+	    default:
+	        question1();
+	}
+    
 });
