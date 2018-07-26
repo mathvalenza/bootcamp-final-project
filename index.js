@@ -43,7 +43,7 @@ $("#question-1").click(function() {
 			if (key === "name") {
 				$("#question").empty();
 				$("#answer").remove();
-				$("#question").append(`1 - Qual a cor dos olhos de <b>${val}</b> ?`);
+				$("#question").append(`1 - What is <b>${val}</b>'s eye color ?`);
     			$("#form").append('<input class="input is-2" id="answer" type="text" placeholder="Text input">');
 			}
 
@@ -69,7 +69,7 @@ function question2() {
 			items.push( "<li id='" + key + "'>" + key + ": " + val + "</li>" );
 
 			if (key === "name") {
-				$("#question").append(`2 - Qual a altura (cm) de <b>${val}</b> ?`);
+				$("#question").append(`2 - How tall is <b>${val}</b> (cm) ?`);
     			$("#form").append('<input class="input is-2" id="answer" type="text" placeholder="Text input">');
 			}
 
@@ -93,7 +93,7 @@ function question3() {
 			items.push( "<li id='" + key + "'>" + key + ": " + val + "</li>" );
 
 			if (key === "name") {
-				$("#question").append(`3 - Quantas horas tem o dia de <b>${val}</b> ?`);
+				$("#question").append(`3 - How many hours is the day of <b>${val}</b> ?`);
 			}
 
 			if (key === "rotation_period") {
@@ -179,7 +179,7 @@ function question4() {
 			items.push( "<li id='" + key + "'>" + key + ": " + val + "</li>" );
 
 			if (key === "name") {
-				$("#question").append(`4 - Quantas pessoas há em ${val} ?`);
+				$("#question").append(`4 - How many people are there in <b>${val}</b> ?`);
 			}
 
 			if (key === "population") {
@@ -243,7 +243,7 @@ function question5() {
 			items.push( "<li id='" + key + "'>" + key + ": " + val + "</li>" );
 
 			if (key === "name") {
-				$("#question").append(`5 - Qual o nome do personagem abaixo?`);
+				$("#question").append(`5 - What is the name of the character below?`);
 				localStorage.setItem("correctAnswer", val);
 				getUrlImage(val);
     			$("#form").append('<input class="input is-2" id="answer" type="text" placeholder="Text input">');
