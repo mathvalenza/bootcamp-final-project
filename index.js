@@ -41,6 +41,8 @@ $("#question-1").click(function() {
 			items.push( "<li id='" + key + "'>" + key + ": " + val + "</li>" );
 
 			if (key === "name") {
+				$("#question").empty();
+				$("#answer").remove();
 				$("#question").append(`1 - Qual a cor dos olhos de <b>${val}</b> ?`);
     			$("#form").append('<input class="input is-2" id="answer" type="text" placeholder="Text input">');
 			}
@@ -305,6 +307,10 @@ function submitRadio(event) {
 	event.preventDefault();
 };
 
+function thanks() {
+	$("#question").append(`That's all, folks. Thank you!`);
+};
+
 function positiveFeedback() {
 	console.log("ACERTÔ MIZERAVI");
 	$("#feedback").remove();
@@ -341,6 +347,9 @@ $("#next").click(function(event) {
 	        break;
 	    case 5:
 	        question5();
+	        break;
+	    case 6:
+	        thanks();
 	        break;
 	    default:
 	        question1();
