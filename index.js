@@ -1,6 +1,5 @@
 $("#get-all").click(function() {
     $.getJSON("https://swapi.co/api/people", function(data, status){
-        // console.log("Data: " + data + "\nStatus: " + status);
         var items = [];
         console.log(data);
         $.each( data["results"], function( key, val ) {
@@ -18,7 +17,6 @@ $("#get-by-id").click(function() {
 	var randomId = Math.floor((Math.random() * 87) + 1);
 
     $.getJSON(`https://swapi.co/api/people/${randomId}`, function(data, status){
-        // console.log("Data: " + data + "\nStatus: " + status);
         var items = [];
         console.log(data);
         $.each( data, function( key, val ) {
@@ -51,11 +49,6 @@ $("#question-1").click(function() {
 				localStorage.setItem("correctAnswer", val);
 			}
 		});
-
-		// $( "<ul/>", {
-		// 	"class": "section",
-		// 	html: items.join( "" )
-		// }).appendTo( "body" );
     }); 
 
     localStorage.setItem("question", 1);
@@ -84,62 +77,6 @@ function question2() {
 		});
     }); 
 };
-
-// function question3() {
-// 	var randomId = Math.floor((Math.random() * 87) + 1);
-// 	var correctAnswer = null;
-// 	var optionsAnswer = [0, 0, 0, 0];
-
-//     $.getJSON(`https://swapi.co/api/people/${randomId}`, function(data, status){
-
-//         var items = [];
-//         console.log(data);
-//         $.each( data, function( key, val ) {
-// 			items.push( "<li id='" + key + "'>" + key + ": " + val + "</li>" );
-
-// 			if (key === "name") {
-// 				$("#question").append(`3 - Qual o peso (kg) de <b>${val}</b> ?`);
-//     			// $("#form").append('<input class="input is-2" id="answer" type="text" placeholder="Text input">');
-// 			}
-
-// 			if (key === "mass") {
-// 				localStorage.setItem("correctAnswer", val);
-
-// 				correctAnswer = val;
-
-// 				var randomIndex = Math.floor(Math.random() * optionsAnswer.length + 1);
-// 				console.log("randomIndex: ", randomIndex);
-
-// 				for (var i=0; i<optionsAnswer.length; i++) {
-// 					if (i === randomIndex) {
-// 						optionsAnswer[i] = val;
-// 					} else {
-
-// 						var newNumber = 0;
-// 						var count = 0;
-
-// 						while (count < 10) {
-// 							moreOrMinus = Number(Math.floor((Math.random() * 2)));
-// 							if (moreOrMinus === 0) {
-// 								newNumber = Number(correctAnswer) + Number(Math.floor((Math.random() * 10)));
-// 							} else {
-// 								newNumber = Number(correctAnswer) - Number(Math.floor((Math.random() * 10)));
-// 							}
-
-// 							if (!optionsAnswer.includes(newNumber)) {
-// 								break;
-// 							} else {
-// 								count++;
-// 							}
-// 						}
-// 						optionsAnswer[i] = newNumber;
-// 					}
-// 				}
-// 				writeOptions(optionsAnswer);
-// 			}
-// 		});
-//     }); 
-// };
 
 function question3() {
 	var randomId = Math.floor((Math.random() * 61) + 1);
@@ -241,7 +178,6 @@ function question4() {
 
 			if (key === "name") {
 				$("#question").append(`4 - Quantas pessoas há em ${val} ?`);
-    			// $("#form").append('<input class="input is-2" id="answer" type="text" placeholder="Text input">');
 			}
 
 			if (key === "population") {
@@ -409,5 +345,4 @@ $("#next").click(function(event) {
 	    default:
 	        question1();
 	}
-    
 });
