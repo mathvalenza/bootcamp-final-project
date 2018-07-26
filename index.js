@@ -71,6 +71,7 @@ function question2() {
 			if (key === "name") {
 				$("#question").append(`2 - How tall is <b>${val}</b> (cm) ?`);
     			$("#form").append('<input class="input is-2" id="answer" type="text" placeholder="Text input">');
+    			getUrlImage(val);
 			}
 
 			if (key === "height") {
@@ -334,6 +335,7 @@ $("#next").click(function(event) {
     $("#answer").remove();
     $("#radio-answers").remove();
     $("#feedback").remove();
+    $("#image").empty();
     console.log(":>> question: ", localStorage.getItem("question"));
     switch(question) {
 	    case 2:
