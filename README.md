@@ -11,4 +11,4 @@ npm install
 
 ws
 ```
-It will being servint at localhost:8000. Enjoy it!
+It will being serving at `localhost:8000`. Enjoy it!
